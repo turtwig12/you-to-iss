@@ -23,7 +23,7 @@ def get_my_location():
     else:
         return None
 
-def get_distance(lat1, lon1, lat2, lon2, hight):
+def get_distance(lat1, lon1, lat2, lon2, height):
 
     lat1 = math.radians(lat1)
     lon1 = math.radians(lon1)
@@ -39,7 +39,7 @@ def get_distance(lat1, lon1, lat2, lon2, hight):
     # Compute the chord distance
     distance_below = 2 * 6371 * math.sin(theta / 2)
 
-    distance_to_iss = (distance_below ** 2) + (hight ** 2)
+    distance_to_iss = (distance_below ** 2) + (height ** 2)
     distance_to_iss = math.sqrt(distance_to_iss)
     return distance_to_iss
 
@@ -80,7 +80,7 @@ print(f"iss_Latitude: {iss_latitude}")
 print(f"iss_Longitude: {iss_longitude}")
 print("")
 
-distance_to_iss = get_distance(my_latitude, my_longitude, iss_latitude, iss_longitude,altitude) #calculates the distance you are from the iss, accounts for the hight the iss is above the earths surface
+distance_to_iss = get_distance(my_latitude, my_longitude, iss_latitude, iss_longitude,altitude) #calculates the distance you are from the iss, accounts for the height the iss is above the earths surface
 print(f"distance_to_iss:{distance_to_iss}km")
 
 plot_map(my_latitude, my_longitude, iss_latitude, iss_longitude, distance_to_iss)#makes the map and displays it on screen

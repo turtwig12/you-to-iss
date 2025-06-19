@@ -55,11 +55,11 @@ def plot_map(lat1, lon1, lat2, lon2, distance_to_iss):
     midpoint = [(location1[0] + location2[0]) / 2, (location1[1] + location2[1]) / 2]
     m = folium.Map(location=midpoint, zoom_start=5)
 
-    # Add markers for both locations
+    # adds markers to the map and gives them their names
     folium.Marker(location1, popup='you').add_to(m)
     folium.Marker(location2, popup='iss').add_to(m)
 
-    # Draw a line between the two points
+    # puts the line between the two points
     folium.PolyLine([location1, location2], color='blue', weight=2.5, opacity=1).add_to(m)
 
     # Add a popup at the midpoint with the distance
@@ -73,14 +73,14 @@ def plot_map(lat1, lon1, lat2, lon2, distance_to_iss):
 my_latitude, my_longitude = get_my_location() #gets your location
 iss_latitude, iss_longitude, altitude = get_iss_location() #gets iss's location
 
-
+#incase issues locations and data are all printed, also helps with testing
 print(f"my_Latitude: {my_latitude}")
 print(f"my_Longitude: {my_longitude}")
-
 print(f"iss_Latitude: {iss_latitude}")
 print(f"iss_Longitude: {iss_longitude}")
-
 print("")
-distance_to_iss = get_distance(my_latitude, my_longitude, iss_latitude, iss_longitude,altitude)
+
+distance_to_iss = get_distance(my_latitude, my_longitude, iss_latitude, iss_longitude,altitude) #calculates the distance you are from the iss, accounts for the hight the iss is above the earths surface
 print(f"distance_to_iss:{distance_to_iss}km")
-plot_map(my_latitude, my_longitude, iss_latitude, iss_longitude, distance_to_iss)
+
+plot_map(my_latitude, my_longitude, iss_latitude, iss_longitude, distance_to_iss)#makes the map and displays it on screen
